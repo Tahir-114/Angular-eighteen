@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="onlyodd = !onlyodd">Show Only Odd Number</button>
+      <ul>
+        <div *ngIf="onlyodd">
+          <li *ngFor="let odd of oddnumber" [ngClass]="{odd:odd % 2 !==0}" 
+          [ngStyle]="{backgroundColor: odd %2 !==0 ? 'yellow' : 'transparent'}">
+            {{odd}}</li>
+        </div>
+        <div *appUnless="onlyodd">
+          <li *ngFor="let even of evenumber" [ngClass]="{odd:even % 2 !==0}" 
+          [ngStyle]="{backgroundColor: even %2 !==0 ? 'yellow' : 'transparent'}">{{even}}</li>
+        </div>
+        <!-- <ng-template [ngIf]="onlyodd">
+          <div >
+            <li *ngFor="let odd of oddnumber" [ngClass]="{odd:odd % 2 !==0}" 
+            [ngStyle]="{backgroundColor: odd %2 !==0 ? 'yellow' : 'transparent'}">
+              {{odd}}</li>
+          </div>
+        </ng-template> -->
+      </ul>
+      <p appBasicHighlight>Style me with basic directive</p>
+      <p [appBetterHighlight] ="'red'" defaultColor="yellow">Style me with basic directive</p>
+
+      <div [ngSwitch]="value">
+         <p *ngSwitchCase="5">Value Is 5</p>
+         <p *ngSwitchDefault> Value Is 18</p>
+         <p *ngSwitchCase="20">Value Is </p>
+      </div>
+    </div>
+  </div>
+</div>

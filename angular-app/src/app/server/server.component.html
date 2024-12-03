@@ -1,0 +1,20 @@
+
+
+<input type="text" [(ngModel)] = "name">
+<span>{{ name }}</span><br>
+
+<button [disabled] = "!name" (click)="oncreateuser()" class="btn btn-primary mt-3">Change Username</button>
+
+<p *ngIf="usercreated; else nouser">user is created, user name is {{ name }}</p>
+<ng-template #nouser> 
+<p [ngStyle]="{backgroundColor:getcolor()}" [ngClass]="{online: serverstatus === 'No server was created!' }">No user was created!</p>
+</ng-template>
+
+<button class="btn btn-primary" (click)="showpassword = !showpassword"> Display Details</button>
+<p *ngIf="showpassword">Secrect password = tuna</p>
+
+<button class="btn btn-primary" (click)="ontoggledetails()"> Display Details</button>
+<div *ngFor="let logitem of log; let i = index"
+[ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}" [ngClass]="{'text-white' : i >=4}">
+{{ logitem }}
+</div>
